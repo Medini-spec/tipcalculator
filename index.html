@@ -4,95 +4,55 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-
-	<div id="container">
-		
+	<div id="container">	
 		<h1>Tip Calculator</h1>
-
 		<div id="calculator">
-
-			<form>
-				<p>How much was your bill?</p>
-
-						<p><b>Rs.</b> <input type="text" id="billamt" placeholder="Bill Amount"></p>
-
-				<p>How was your service?</p>
-
+		<form>
+			<p>How much was your bill?</p>
+			<p><b>Rs.</b> <input type="text" id="billamt" placeholder="Bill Amount"></p>
+			<p>How was your service?</p>
 				<select id="serviceQual">
-
 					<option disabled selected value ="0">--Choose an Option--</option>
 					<option value="0.15">15&#37; &#045; Outstanding</option>
 					<option value="0.10">15&#37; &#045; Good</option>
 					<option value="0.05">15&#37; &#045; It was Ok</option>
-					
 				</select>
-			</form>
-
+		</form>
 			<p>How many people are sharing the bill?</p>
-
 			<input type="text" id="peopleamt" placeholder="Number of people"><b>People</b>
-
 			<button type="button" id="calculate">Calculate</button>
-
-
 			<div>
-				
-				<!--calculator end-->
+			<!--calculator end-->
 				<div id="totalTip">
 					<sup>Rs. <span id="tip">0.00</span></sup>
-					<small id="each"><b>each</b></small>
-
-					
+					<small id="each"><b>each</b></small>	
 				</div>
 				<!--totlTip end-->
-
-				<div>
-					
-					<!--container end-->
-
-				
+				<div>	
+				<!--container end-->		
 				</div>
-
-
 			</div>
-
-			
-
-
 		</div>
-
 	</div>
-
 	<script type="text/javascript">
-		
 		//calculate tip
-
 		function calculateTip() {
-
 			var billAmt = document.getElementById("billamt").value;
-
 			var serviceQual = document.getElementById("serviceQual").value;
-
 			var numOfPeople = document.getElementById("peopleamt").value;
-
 			//validate input
 			if (billAmt === "" || serviceQual ==0) {
-
 				alert("pleasenter values");
 				return;
 			}
-
 			if(numOfPeople=== "" || numOfPeople<= 1){
-
 				numOfPeople=1;
 				document.getElementById("each").style.display = "none";
 			}
 			else{
 				document.getElementById("each").style.display = "block";
 			}
-
 			//calculatee Tip
-
 			var total =(billAmt * serviceQual) / numOfPeople;
 			//round to two decimal places
 			total = Math.round(total);
@@ -100,17 +60,13 @@
 			document.getElementById("totalTip").style.display = "block";
 			document.getElementById("tip").innerHTML = total;
 		}
-
 		//hide the tip amount no load
 		document.getElementById("totalTip").style.display = "none";
 		document.getElementById("each").style.display = "none";
-
 		//click to call function
-
 		document.getElementById("calculate").onclick = function() {
 			calculateTip();
 		};
 	</script>
-
 </body>
 </html>
